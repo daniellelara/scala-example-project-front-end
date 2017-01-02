@@ -20,6 +20,7 @@
 
   <ul ng-repeat="user in vm.users">
     <li ng-bind="user.firstName"></li>
+    <button ng-click="vm.deleteUser(user.id)">delete</button>
   </ul>
 
   <h2>Add user</h2>

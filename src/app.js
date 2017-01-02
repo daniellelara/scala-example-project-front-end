@@ -19,6 +19,14 @@ ngModule.controller('homeCtrl', ['$scope', 'userService', function($scope, userS
     });
   }; 
 
+  vm.deleteUser = function(id) {
+    userService.deleteUser(id).then(function(res){
+      return userService.getUsers().then(function(users){
+        vm.users = users;
+      });  
+    });
+  }
+
   userService.getUsers().then(function(users){
     vm.users = users;
   });
@@ -54,10 +62,23 @@ ngModule.service('userService', ['$http', function($http){
      data: newUser
     };
 
+
     return $http(req).then(function successCallback(response) {
       return response
     }, function(error){
       return error;
+    });
+  };
+
+  api.deleteUser = function(id) {
+    var endpoint = URL_PATH + '/delete/' + id;
+
+    return $http.get(endpoint, {}).then(function onSuccess (res){
+      console.log('user deleted');
+      return res;
+    }, function onFail(err){
+      console.log('failed'); 
+      return err;
     });
   };
 

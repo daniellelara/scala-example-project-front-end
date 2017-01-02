@@ -19,6 +19,14 @@ ngModule.controller('homeCtrl', ['$scope', 'userService', function($scope, userS
     });
   }; 
 
+  vm.deleteUser = function(id) {
+    userService.deleteUser(id).then(function(res){
+      return userService.getUsers().then(function(users){
+        vm.users = users;
+      });  
+    });
+  }
+
   userService.getUsers().then(function(users){
     vm.users = users;
   });

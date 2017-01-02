@@ -26,10 +26,23 @@ ngModule.service('userService', ['$http', function($http){
      data: newUser
     };
 
+
     return $http(req).then(function successCallback(response) {
       return response
     }, function(error){
       return error;
+    });
+  };
+
+  api.deleteUser = function(id) {
+    var endpoint = URL_PATH + '/delete/' + id;
+
+    return $http.get(endpoint, {}).then(function onSuccess (res){
+      console.log('user deleted');
+      return res;
+    }, function onFail(err){
+      console.log('failed'); 
+      return err;
     });
   };
 
