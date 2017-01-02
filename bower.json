@@ -1,0 +1,18 @@
+{
+  "name": "scala-fe",
+  "authors": [
+    "daniellelara <daniellelaragourgey@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "js/vendor",
+    "test",
+    "tests"
+  ]
+}
