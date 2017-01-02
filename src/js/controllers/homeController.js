@@ -6,8 +6,21 @@ ngModule.controller('homeCtrl', ['$scope', 'userService', function($scope, userS
 
   var vm = this;
 
-  vm.users = userService.getUsers().then(function(res){
-    console.log(res);
+
+  vm.newUser = {
+    id: 0
+  };
+
+  vm.submitUser = function() {
+    userService.addUser(vm.newUser).then(function() {
+      return userService.getUsers().then(function(users){
+        vm.users = users;
+      }); 
+    });
+  }; 
+
+  userService.getUsers().then(function(users){
+    vm.users = users;
   });
 
 

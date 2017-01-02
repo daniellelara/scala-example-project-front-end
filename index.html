@@ -17,6 +17,24 @@
 </head>
 
 <body ng-controller="homeCtrl as vm">
+
+  <ul ng-repeat="user in vm.users">
+    <li ng-bind="user.firstName"></li>
+  </ul>
+
+  <h2>Add user</h2>
+
+  <form ng-submit="vm.submitUser()">
+    <label>firstName</label>
+    <input ng-model="vm.newUser.firstName" name="firstName" type="text"/>
+    <label>lastName</label>
+    <input ng-model="vm.newUser.lastName" name="lastName" type="text"/>
+    <label>mobile</label>
+    <input ng-model="vm.newUser.mobile" name="mobile" type="number"/>
+    <label>email</label>
+    <input ng-model="vm.newUser.email" name="email" type="text"/>
+    <input type="submit" id="submit" value="Submit">
+  </form>
   
 </body>
 </html>
